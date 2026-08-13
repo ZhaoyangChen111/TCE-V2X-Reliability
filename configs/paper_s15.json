@@ -1,0 +1,45 @@
+{
+  "note": "Formal S15 research configuration recovered from the preserved run command logs. It is not the generic CLI default.",
+  "scenarios": ["Ref", "UrbMask", "Tunnel"],
+  "loads": ["NoCong", "Cong"],
+  "policies": ["noretx", "classical", "nomikos", "udrc", "mdp_lite"],
+  "duration_s": 60,
+  "dt_s": 0.1,
+  "seed_start": 1,
+  "n_seeds": 15,
+  "msg_rate_hz": 10,
+  "max_distance_m": 200,
+  "tce": {
+    "profile": "custom",
+    "deadline_ms": 20,
+    "grace_ms": 50,
+    "beta": 2.995732273553991,
+    "gamma": 2.0
+  },
+  "tx": {
+    "mode": "mix",
+    "k": 6,
+    "k_cross": 2,
+    "cross_prefixes": "CROSS_,TURN_"
+  },
+  "retransmission": {
+    "noretx_budget": 0,
+    "standard_budgets": [1, 2],
+    "mdp_budget": 2,
+    "udrc_lambda": 0.03,
+    "cost_mode": "delay_cbr",
+    "mdp_model_tag": "m3ref_fixed",
+    "mdp_threshold": 0.0,
+    "mdp_cost_scale": 0.85,
+    "mdp_min_samples": 3,
+    "mdp_discount": 1.0
+  },
+  "models": {
+    "NoCong.Ref": "models/mdp_lite_model__NoCong__Ref__ret2__classic__seed1-15.json",
+    "NoCong.UrbMask": "models/mdp_lite_model__NoCong__UrbMask__ret2__classic__seed1-15.json",
+    "NoCong.Tunnel": "models/mdp_lite_model__NoCong__Tunnel__ret2__classic__seed1-15.json",
+    "Cong.Ref": "models/mdp_lite_model__Cong__Ref__ret2__classic__seed1-15.json",
+    "Cong.UrbMask": "models/mdp_lite_model__Cong__UrbMask__ret2__classic__seed1-15.json",
+    "Cong.Tunnel": "models/mdp_lite_model__Cong__Tunnel__ret2__classic__seed1-15.json"
+  }
+}
